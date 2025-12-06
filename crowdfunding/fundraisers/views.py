@@ -1,8 +1,8 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.http import Http404
-from .models import Fundraiser, Pledge
-from .serializers import FundraiserSerializer, PledgeSerializer, FundraiserDetailSerializer, PledgeDetailSerializer
+from .models import Fundraiser, Pledge, Dogs
+from .serializers import FundraiserSerializer, PledgeSerializer, DogsSerializer, FundraiserDetailSerializer, PledgeDetailSerializer, DogsDetailSerializer
 from rest_framework import status, permissions
 from .permissions import IsOwnerOrReadOnly,IsSupporterOrReadOnly
 class FundraiserList(APIView):
@@ -77,8 +77,7 @@ class PledgeList(APIView):
        return Response(
            serializer.errors,
            status=status.HTTP_400_BAD_REQUEST
-       )   
-   
+       )     
 class PledgeDetail(APIView):
    permission_classes = [
       permissions.IsAuthenticatedOrReadOnly,
@@ -113,3 +112,57 @@ class PledgeDetail(APIView):
            serializer.errors,
            status=status.HTTP_400_BAD_REQUEST
        )   
+class DogsList(APIView):
+   permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+   def get(self, request):
+       dogs = Dogs.objects.all()
+       serializer = DogsSerializer(dogs, many=True)
+       return Response(serializer.data)
+
+   def post(self, request):
+       serializer = DogsSerializer(data=request.data)
+       if serializer.is_valid():
+            serializer.save(owner=request.user)
+            return Response(
+               serializer.data,
+               status=status.HTTP_201_CREATED
+           )
+       return Response(
+           serializer.errors,
+           status=status.HTTP_400_BAD_REQUEST
+       )
+class DogsDetail(APIView):
+   permission_classes = [
+      permissions.IsAuthenticatedOrReadOnly,
+      IsOwnerOrReadOnly
+   ]
+
+   def get_object(self, pk):
+       try:
+           dogs = Dogs.objects.get(pk=pk)
+           self.check_object_permissions(self.request, dogs)
+           return dogs
+       except Dogs.DoesNotExist:
+           raise Http404
+
+   def get(self, request, pk):
+       dogs = self.get_object(pk)
+       serializer = DogsDetailSerializer(dogs)
+       return Response(serializer.data)  
+   
+   def put(self, request, pk):
+       dogs = self.get_object(pk)
+       serializer = DogsDetailSerializer(
+           instance=dogs,
+           data=request.data,
+           partial=True
+       )
+       if serializer.is_valid():
+           serializer.save()
+           return Response(serializer.data)
+
+       return Response(
+           serializer.errors,
+           status=status.HTTP_400_BAD_REQUEST
+       )       

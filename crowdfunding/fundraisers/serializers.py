@@ -13,6 +13,12 @@ class FundraiserSerializer(serializers.ModelSerializer):
        model = apps.get_model('fundraisers.Fundraiser')
        fields = '__all__'
 
+class DogsSerializer(serializers.ModelSerializer):
+   owner = serializers.ReadOnlyField(source='owner.id')
+   class Meta:
+       model = apps.get_model('fundraisers.Dogs')
+       fields = '__all__'
+
 class FundraiserDetailSerializer(FundraiserSerializer):
    pledges = PledgeSerializer(many=True, read_only=True)  
 
@@ -27,8 +33,6 @@ class FundraiserDetailSerializer(FundraiserSerializer):
       instance.save()
       return instance     
 
-
-
 class PledgeDetailSerializer(PledgeSerializer):
 
    def update(self, instance, validated_data):
@@ -38,4 +42,17 @@ class PledgeDetailSerializer(PledgeSerializer):
       instance.fundraiser = validated_data.get('fundraiser', instance.fundraiser)
       instance.supporter = validated_data.get('supporter', instance.supporter)
       instance.save()
-      return instance        
+      return instance
+
+class DogsDetailSerializer(DogsSerializer):
+   #dogs = DogsSerializer(many=True, read_only=True)  
+
+   def update(self, instance, validated_data):
+      instance.name = validated_data.get('name', instance.name)
+      instance.breed = validated_data.get('breed', instance.breed)
+      instance.age = validated_data.get('age', instance.age)
+      instance.gender = validated_data.get('gender', instance.gender)
+      instance.background = validated_data.get('background', instance.background)
+      instance.owner = validated_data.get('owner', instance.owner)
+      instance.save()
+      return instance           

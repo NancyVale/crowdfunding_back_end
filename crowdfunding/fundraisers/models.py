@@ -29,3 +29,16 @@ class Pledge(models.Model):
        on_delete=models.CASCADE,
        related_name='pledges'
    )
+
+class Dogs(models.Model):
+   name = models.CharField(max_length=200)
+   breed = models.CharField(max_length=100)
+   age = models.IntegerField()
+   gender = models.CharField(max_length=20)
+   background = models.CharField(max_length=700)
+   date_created = models.DateTimeField(auto_now_add=True)
+   owner = models.ForeignKey(
+       get_user_model(),
+       on_delete=models.CASCADE,
+       related_name='owned_dog'
+   )
