@@ -9,9 +9,24 @@ from .serializers import CustomUserSerializer
 
 class CustomUserList(APIView):
   def get(self, request):
-      users = CustomUser.objects.all()
-      serializer = CustomUserSerializer(users, many=True)
-      return Response(serializer.data)
+      
+    # Extract query parameters
+    street_address = request.query_params.get('street_address')
+    suburb = request.query_params.get('suburb')
+    state = request.query_params.get('state')
+
+    # Start with all users
+    users = CustomUser.objects.all()
+
+    # Apply filters if parameters are provided
+    if street_address:
+        users = users.filter(street_address__iexact=street_address)  
+    if suburb:
+        users = users.filter(suburb__iexact=suburb)
+    if state:
+        users = users.filter(state__iexact=state)
+    serializer = CustomUserSerializer(users, many=True)
+    return Response(serializer.data)
 
   def post(self, request):
       serializer = CustomUserSerializer(data=request.data)
