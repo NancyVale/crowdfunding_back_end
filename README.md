@@ -13,32 +13,29 @@
 
 ### A screenshot of Insomnia, demonstrating a successful GET method for any endpoint.
 <p>
-<img src="./images/FilteringUsers.png" width="300" height="350">
+<img src="./images/FilteringUsers.png" width="500" height="550">
 </p>
 
 ### A screenshot of Insomnia, demonstrating a successful POST method for any endpoint.
 <p>
-<img src="./images/CreatedUser.png" width="300" height="350">
+<img src="./images/CreatedUser.png" width="500" height="550">
 </p>
 
 ### A screenshot of Insomnia, demonstrating a token being returned.
 <p>
-<img src="./images/CreateToken.png" width="300" height="350">
+<img src="./images/CreateToken.png" width="500" height="550">
 </p>
 
 ### Insomnia endpoints
 <p>
-<img src="./images/InsomniaEndPoints.png" width="300" height="350">
+<img src="./images/InsomniaEndPoints.png" width="500" height="550">
 </p>
 
 ### Step by step instructions for how to register a new user and create a new fundraiser (i.e. endpoints and body data).
 
 | URL | HTTP Method | Purpose | Request Body | Success Response Code | Authentication/Authorisation |
-
-https://fundraiser-friends-efd953c1c319.herokuapp.com/users/
-POST
-Create a new users
-{
+| --- | ----------- | ------- | ------------ | --------------------- | ---------------------------- |
+| https://fundraiser-friends-efd953c1c319.herokuapp.com/users/    |      POST       |   Create a new users      |     {
 		"last_login": null,
 	  "password":"Alicia2021",
 		"is_superuser": false,
@@ -56,9 +53,9 @@ Create a new users
 		"postcode": "4059",
 		"phone_number": "0432792376",
 		"profile_image": "https://via.placeholder.com/300.jpg"
-}
-201 Created
-N/A
+}         |          201 Created             |              N/A                |
+
+
 
 | URL | HTTP Method | Purpose | Request Body | Success Response Code | Authentication/Authorisation |
 https://fundraiser-friends-efd953c1c319.herokuapp.com/fundraisers/  
@@ -93,5 +90,5 @@ Created pledges
 
 ### DB Schema
 <p>
-<img src="./images/database-diagram.jpeg" width="250" height="200">
+<img src="./images/database-diagram.jpeg" width="550" height="550">
 </p>
