@@ -54,13 +54,13 @@
 		"phone_number": "0432792376",
 		"profile_image": "https://via.placeholder.com/300.jpg"
 |          201 Created             |              N/A                |
-| --- | ----------- | ------- | ------------ | --------------------- | ---------------------------- |
+
 | https://fundraiser-friends-efd953c1c319.herokuapp.com/fundraisers/    |       POST      |    Create a new fundraisers     |     "title": "Walking with little Cheena, my lovely girl. Nothing better than making her happy",
 "description": "Recovering from injury",
 "goal": 60,
 "image": "https://via.placeholder.com/300.jpg",
 "is_open": true         |           201 Created            |             "token": "e594e908e037f169a62bc074602fd3927684621d"                 |
-| --- | ----------- | ------- | ------------ | --------------------- | ---------------------------- |
+
 |  https://fundraiser-friends-efd953c1c319.herokuapp.com/pledges/   |     POST        |    Create a pledges     |     "amount": 40,
     "comment": "I can take cheena for a walk after 4pm for 40 min",
     "anonymous": false,
