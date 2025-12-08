@@ -13,31 +13,31 @@
 
 ### A screenshot of Insomnia, demonstrating a successful GET method for any endpoint.
 <p>
-<img src="./images/FilteringUsers.png" width="500" height="550">
+<img src="./images/FilteringUsers.png" width="700" height="750">
 </p>
 
 ### A screenshot of Insomnia, demonstrating a successful POST method for any endpoint.
 <p>
-<img src="./images/CreatedUser.png" width="500" height="550">
+<img src="./images/CreatedUser.png" width="700" height="750">
 </p>
 
 ### A screenshot of Insomnia, demonstrating a token being returned.
 <p>
-<img src="./images/CreateToken.png" width="500" height="550">
+<img src="./images/CreateToken.png" width="700" height="750">
 </p>
 
 ### Insomnia endpoints
 <p>
-<img src="./images/InsomniaEndPoints.png" width="500" height="550">
+<img src="./images/InsomniaEndPoints.png" width="700" height="750">
 </p>
 
 ### Step by step instructions for how to register a new user and create a new fundraiser (i.e. endpoints and body data).
 
 | URL | HTTP Method | Purpose | Request Body | Success Response Code | Authentication/Authorisation |
 | --- | ----------- | ------- | ------------ | --------------------- | ---------------------------- |
-| https://fundraiser-friends-efd953c1c319.herokuapp.com/users/    |      POST       |   Create a new users      |     {
+| https://fundraiser-friends-efd953c1c319.herokuapp.com/users/    |      POST       |   Create a new users      |    
 		"last_login": null,
-	  "password":"Alicia2021",
+	    "password":"Alicia2021",
 		"is_superuser": false,
 		"username": "Scott",
 		"first_name": "Scott",
@@ -53,42 +53,22 @@
 		"postcode": "4059",
 		"phone_number": "0432792376",
 		"profile_image": "https://via.placeholder.com/300.jpg"
-}         |          201 Created             |              N/A                |
-
-
-
-| URL | HTTP Method | Purpose | Request Body | Success Response Code | Authentication/Authorisation |
-https://fundraiser-friends-efd953c1c319.herokuapp.com/fundraisers/  
-POST
-Created fundraisers
-{
-"title": "Walking with little Cheena, my lovely girl. Nothing better than making her happy",
+|          201 Created             |              N/A                |
+| --- | ----------- | ------- | ------------ | --------------------- | ---------------------------- |
+| https://fundraiser-friends-efd953c1c319.herokuapp.com/fundraisers/    |       POST      |    Create a new fundraisers     |     "title": "Walking with little Cheena, my lovely girl. Nothing better than making her happy",
 "description": "Recovering from injury",
 "goal": 60,
 "image": "https://via.placeholder.com/300.jpg",
-"is_open": true
-}
-201 Created
-"token": "e594e908e037f169a62bc074602fd3927684621d"
-
-| URL | HTTP Method | Purpose | Request Body | Success Response Code | Authentication/Authorisation |
-https://fundraiser-friends-efd953c1c319.herokuapp.com/pledges/
-POST
-Created pledges
-{
-    "amount": 40,
+"is_open": true         |           201 Created            |             "token": "e594e908e037f169a62bc074602fd3927684621d"                 |
+| --- | ----------- | ------- | ------------ | --------------------- | ---------------------------- |
+|  https://fundraiser-friends-efd953c1c319.herokuapp.com/pledges/   |     POST        |    Create a pledges     |     "amount": 40,
     "comment": "I can take cheena for a walk after 4pm for 40 min",
     "anonymous": false,
-    "fundraiser": 1
-}
-201 Created
-{
-	"token": "abdfc771282dddc8d34f08f4a53a993526c35d2f",
+    "fundraiser": 1         |           201 Created            |               "token": "abdfc771282dddc8d34f08f4a53a993526c35d2f",
 	"user_id": 68,
-	"email": "valentin@hotmail.com"
-}
+	"email": "valentin@hotmail.com"               |
 
 ### DB Schema
 <p>
-<img src="./images/database-diagram.jpeg" width="550" height="550">
+<img src="./images/database-diagram.jpeg" width="650" height="650">
 </p>
