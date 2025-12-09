@@ -14,11 +14,6 @@ class Fundraiser(models.Model):
        on_delete=models.CASCADE,
        related_name='owned_fundraisers'
    )
-   dogs = models.ForeignKey(
-       'Dogs',
-       on_delete=models.CASCADE,
-       related_name='owned_dog'
-   ) 
 
 class Pledge(models.Model):
    amount = models.IntegerField()
@@ -34,7 +29,6 @@ class Pledge(models.Model):
        on_delete=models.CASCADE,
        related_name='pledges'
    )
-   
 
 class Dogs(models.Model):
    name = models.CharField(max_length=200)
