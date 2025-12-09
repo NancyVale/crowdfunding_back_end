@@ -18,7 +18,7 @@ class Fundraiser(models.Model):
       'Dogs',
       on_delete=models.CASCADE,
       related_name='owned_dog',
-      null=True,
+      null=False,
    ) 
 
 class Pledge(models.Model):

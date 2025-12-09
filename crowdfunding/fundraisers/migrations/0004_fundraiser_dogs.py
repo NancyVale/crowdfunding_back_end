@@ -4,6 +4,14 @@ import django.db.models.deletion
 from django.db import migrations, models
 
 
+def get_dogs_field(apps, schema_editor):
+    Fundraiser = apps.get_model('fundraisers', 'Fundraiser')
+    Dogs = apps.get_model('fundraisers', 'Dogs')
+    for fundraiser in Fundraiser.objects.all():
+        fundraiser.dogs = Dogs.objects.filter(owner=fundraiser.owner).first()
+        fundraiser.save()
+
+
 class Migration(migrations.Migration):
 
     dependencies = [
@@ -15,5 +23,14 @@ class Migration(migrations.Migration):
             model_name='fundraiser',
             name='dogs',
             field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='owned_dog', to='fundraisers.dogs'),
+        ),  
+        migrations.RunPython(
+            code=get_dogs_field,
+            reverse_code=migrations.RunPython.noop
+        ),
+        migrations.AlterField(
+            model_name='fundraiser',
+            name='dogs',
+            field=models.ForeignKey(null=False, on_delete=django.db.models.deletion.CASCADE, related_name='owned_dog', to='fundraisers.dogs'),
         ),
     ]
