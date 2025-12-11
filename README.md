@@ -99,5 +99,5 @@
 
 ### DB Schema
 <p>
-<img src="./images/database-diagram.jpeg" width="650" height="650">
+<img src="./images/database-diagram2.jpeg" width="650" height="650">
 </p>
